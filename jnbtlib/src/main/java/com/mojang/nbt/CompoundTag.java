@@ -39,6 +39,11 @@ public class CompoundTag extends Tag {
         return tags.values();
     }
 
+    public Map<String, Tag> getValue()
+    {
+        return tags;
+    }
+
     public byte getId() {
         return TAG_Compound;
     }
