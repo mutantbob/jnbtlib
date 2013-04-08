@@ -48,6 +48,17 @@ public class NbtIo {
         return baos.toByteArray();
     }
 
+    public static byte[] deflate(CompoundTag tag) throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        DataOutputStream dos = new DataOutputStream(new DeflaterOutputStream(baos));
+        try {
+            write(tag, dos);
+        } finally {
+            dos.close();
+        }
+        return baos.toByteArray();
+    }
+
     public static void safeWrite(CompoundTag tag, File file) throws IOException {
         File file2 = new File(file.getAbsolutePath() + "_tmp");
         if (file2.exists()) file2.delete();
